@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="adventureworks2022Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="personalterritory">
+          <Key>
+            <PropertyRef Name="businessEntityId" />
+          </Key>
+          <Property Name="businessEntityId" Type="int" Nullable="false" />
+          <Property Name="territoryId" Type="int" />
+          <Property Name="salesQuota" Type="money" />
+          <Property Name="bonus" Type="money" />
+          <Property Name="commissionPct" Type="money" />
+        </EntityType>
+        <EntityType Name="salesterritory">
+          <Key>
+            <PropertyRef Name="territoryId" />
+          </Key>
+          <Property Name="territoryId" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="countryRegionCode" Type="varchar" MaxLength="3" />
+          <Property Name="groupTerritory" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="adventureworks2022ModelStoreContainer">
+          <EntitySet Name="personalterritory" EntityType="Self.personalterritory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="salesterritory" EntityType="Self.salesterritory" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="adventureworks2022Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="personalterritory">
+          <Key>
+            <PropertyRef Name="businessEntityId" />
+          </Key>
+          <Property Name="businessEntityId" Type="Int32" Nullable="false" />
+          <Property Name="territoryId" Type="Int32" />
+          <Property Name="salesQuota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="bonus" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="commissionPct" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="salesterritory">
+          <Key>
+            <PropertyRef Name="territoryId" />
+          </Key>
+          <Property Name="territoryId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="countryRegionCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="groupTerritory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="adventureworks2022Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="personalterritory" EntityType="Self.personalterritory" />
+          <EntitySet Name="salesterritory" EntityType="Self.salesterritory" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="adventureworks2022ModelStoreContainer" CdmEntityContainer="adventureworks2022Entities">
+          <EntitySetMapping Name="personalterritory">
+            <EntityTypeMapping TypeName="adventureworks2022Model.personalterritory">
+              <MappingFragment StoreEntitySet="personalterritory">
+                <ScalarProperty Name="businessEntityId" ColumnName="businessEntityId" />
+                <ScalarProperty Name="territoryId" ColumnName="territoryId" />
+                <ScalarProperty Name="salesQuota" ColumnName="salesQuota" />
+                <ScalarProperty Name="bonus" ColumnName="bonus" />
+                <ScalarProperty Name="commissionPct" ColumnName="commissionPct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salesterritory">
+            <EntityTypeMapping TypeName="adventureworks2022Model.salesterritory">
+              <MappingFragment StoreEntitySet="salesterritory">
+                <ScalarProperty Name="territoryId" ColumnName="territoryId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="countryRegionCode" ColumnName="countryRegionCode" />
+                <ScalarProperty Name="groupTerritory" ColumnName="groupTerritory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
